@@ -1,26 +1,26 @@
-# Community Board 👩🏻‍💻
+# 👩🏻‍💻 community board
 
-> [요즘 바이브 코딩 커서 AI 30가지 프로그램 만들기](https://product.kyobobook.co.kr/detail/S000217462860) 나만의 커뮤니티 게시판 만들기 실습
+Next.js + Supabase로 만든 Reddit 스타일 커뮤니티 게시판입니다.  
+이메일 회원가입·로그인, 게시글 CRUD, 이미지 첨부, 좋아요/싫어요, 댓글·답글을 지원합니다.
 
-Next.js(App Router) + Tailwind CSS + Supabase로 만든 Reddit 스타일 커뮤니티 게시판입니다.  
-이메일/비밀번호 인증과 글·댓글·반응·검색을 지원합니다.
+## 기술 스택
 
----
+- **Frontend** — Next.js (App Router), React, Tailwind CSS, Pretendard
+- **Backend** — Supabase (Auth, Postgres, Storage, RLS)
 
 ## 주요 기능
 
-- 회원가입 · 로그인 · 로그아웃 · 내 정보(닉네임·소개)
+- 이메일·비밀번호 회원가입 / 로그인 / 로그아웃
+- 프로필(닉네임·소개) 수정
 - 게시글 작성 · 수정 · 삭제 · 검색
 - 게시글·댓글 이미지 첨부
 - 좋아요 / 싫어요
 - 댓글 · 답글 (1단계)
 
----
-
 ## 폴더 구조
 
-```
-community-board/
+```text
+community/
 ├── public/                 # 정적 자산
 ├── src/
 │   ├── app/                # App Router 페이지
@@ -29,38 +29,26 @@ community-board/
 │   │   ├── signup/         # 회원가입
 │   │   ├── me/             # 내 프로필
 │   │   └── posts/          # 게시글 상세 · 작성 · 수정
-│   ├── components/         # Header · 사이드바 · PostCard · 댓글 · 반응 버튼
-│   ├── actions/            # auth · posts · comments · reactions · profile
+│   ├── components/         # UI 컴포넌트
+│   ├── actions/            # Server Actions (auth, posts, comments …)
 │   ├── lib/
-│   │   ├── supabase/       # browser / server / middleware 클라이언트
-│   │   ├── posts.ts
-│   │   ├── profile.ts
-│   │   └── types.ts
+│   │   ├── supabase/       # Supabase 클라이언트 (browser / server / middleware)
+│   │   ├── posts.ts        # 게시글 조회 헬퍼
+│   │   ├── profile.ts      # 프로필 헬퍼
+│   │   └── types.ts        # 공통 타입
 │   └── middleware.ts       # 세션 갱신
 ├── .env.example
 ├── next.config.ts
 └── package.json
 ```
 
----
+## 페이지 구성
 
-## 실행 방법
-
-```bash
-npm install
-
-# .env.local 생성 (.env.example 참고)
-# NEXT_PUBLIC_SUPABASE_URL=...
-# NEXT_PUBLIC_SUPABASE_ANON_KEY=...
-
-npm run dev
-# http://localhost:3000 접속
-```
-
----
-
-## 참고
-
-- **실습 기록** · [CursorAI-study](https://github.com/absolutelyfullycapable/CursorAI-study)
-- **저자** · 박현규
-- **출판** · 골든래빗(주), 2025
+| 경로 | 설명 |
+|------|------|
+| `/` | 게시글 목록 · 검색 |
+| `/login`, `/signup` | 로그인 · 회원가입 |
+| `/me` | 내 프로필 |
+| `/posts/new` | 게시글 작성 |
+| `/posts/[id]` | 게시글 상세 · 댓글 |
+| `/posts/[id]/edit` | 게시글 수정 |
