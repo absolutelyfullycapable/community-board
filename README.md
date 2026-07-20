@@ -1,29 +1,54 @@
 # community-board
 
-Next.js + Supabase로 만든 커뮤니티 게시판입니다.  
-게시글, 댓글, 좋아요/싫어요를 지원합니다.
+Next.js + Supabase로 만든 Reddit 스타일 커뮤니티 게시판입니다.  
+이메일 회원가입·로그인, 게시글 CRUD, 이미지 첨부, 좋아요/싫어요, 댓글·답글을 지원합니다.
 
-## 환경 변수
+## 기술 스택
 
-`.env.example`을 참고해 `.env.local`에 아래 값을 넣습니다.
+- **Frontend** — Next.js (App Router), React, Tailwind CSS, Pretendard
+- **Backend** — Supabase (Auth, Postgres, Storage, RLS)
 
-| 변수 | 설명 |
-|------|------|
-| `NEXT_PUBLIC_SUPABASE_URL` | Supabase Project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anon key |
+## 주요 기능
 
-## 로컬 실행
+- 이메일·비밀번호 회원가입 / 로그인 / 로그아웃
+- 프로필(닉네임·소개) 수정
+- 게시글 작성 · 수정 · 삭제 · 검색
+- 게시글·댓글 이미지 첨부
+- 좋아요 / 싫어요
+- 댓글 · 답글 (1단계)
 
-```bash
-npm install
-cp .env.example .env.local
-npm run dev
+## 폴더 구조
+
+```text
+community/
+├── public/                 # 정적 자산
+├── src/
+│   ├── app/                # App Router 페이지
+│   │   ├── page.tsx        # 홈 (게시글 목록)
+│   │   ├── login/          # 로그인
+│   │   ├── signup/         # 회원가입
+│   │   ├── me/             # 내 프로필
+│   │   └── posts/          # 게시글 상세 · 작성 · 수정
+│   ├── components/         # UI 컴포넌트
+│   ├── actions/            # Server Actions (auth, posts, comments …)
+│   ├── lib/
+│   │   ├── supabase/       # Supabase 클라이언트 (browser / server / middleware)
+│   │   ├── posts.ts        # 게시글 조회 헬퍼
+│   │   ├── profile.ts      # 프로필 헬퍼
+│   │   └── types.ts        # 공통 타입
+│   └── middleware.ts       # 세션 갱신
+├── .env.example
+├── next.config.ts
+└── package.json
 ```
 
-## 배포 (Vercel)
+## 페이지 구성
 
-1. 이 저장소를 Vercel에 Import
-2. 위 환경 변수를 등록한 뒤 Deploy
-3. Supabase → Authentication → URL Configuration에 Vercel 도메인 추가
-
-가입 직후 로그인이 안 되면 Supabase Email 설정의 Confirm email을 끄면 됩니다.
+| 경로 | 설명 |
+|------|------|
+| `/` | 게시글 목록 · 검색 |
+| `/login`, `/signup` | 로그인 · 회원가입 |
+| `/me` | 내 프로필 |
+| `/posts/new` | 게시글 작성 |
+| `/posts/[id]` | 게시글 상세 · 댓글 |
+| `/posts/[id]/edit` | 게시글 수정 |
