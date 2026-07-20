@@ -1,4 +1,4 @@
-# community-board
+# 👩🏻‍💻 community board
 
 Next.js + Supabase로 만든 Reddit 스타일 커뮤니티 게시판입니다.  
 이메일 회원가입·로그인, 게시글 CRUD, 이미지 첨부, 좋아요/싫어요, 댓글·답글을 지원합니다.
