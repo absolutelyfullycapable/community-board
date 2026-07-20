@@ -3,10 +3,14 @@
 Next.js + Supabase로 만든 Reddit 스타일 커뮤니티 게시판입니다.  
 이메일 회원가입·로그인, 게시글 CRUD, 이미지 첨부, 좋아요/싫어요, 댓글·답글을 지원합니다.
 
+---
+
 ## 기술 스택
 
 - **Frontend** — Next.js (App Router), React, Tailwind CSS, Pretendard
 - **Backend** — Supabase (Auth, Postgres, Storage, RLS)
+
+---
 
 ## 주요 기능
 
@@ -16,6 +20,8 @@ Next.js + Supabase로 만든 Reddit 스타일 커뮤니티 게시판입니다.
 - 게시글·댓글 이미지 첨부
 - 좋아요 / 싫어요
 - 댓글 · 답글 (1단계)
+
+---
 
 ## 폴더 구조
 
@@ -41,6 +47,8 @@ community/
 ├── next.config.ts
 └── package.json
 ```
+
+---
 
 ## 페이지 구성
 
