@@ -5,6 +5,12 @@ Next.js + Supabase로 만든 Reddit 스타일 커뮤니티 게시판입니다.
 
 ---
 
+## 배포 주소
+
+[community-board-black.vercel.app/](https://community-board-black.vercel.app/)
+
+---
+
 ## 기술 스택
 
 - **Frontend** — Next.js (App Router), React, Tailwind CSS, Pretendard
